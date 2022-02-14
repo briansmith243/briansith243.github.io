@@ -20,13 +20,35 @@ var init = function (window) {
         ////////////////////////////////////////////////////////////
         
         // TODO 1 : Declare and initialize our variables
-
+        var circle;                                     //just variables to help later code adn loops
+        var circles = [];
 
         // TODO 2 : Create a function that draws a circle 
         
+             // Code to draw a circle
+        function drawCircle(){
+            circle = draw.randomCircleInArea(canvas, true, true, '#999', 2);
+            physikz.addRandomVelocity(circle, canvas, 10, 10);                     //The  draw.randomCircleInArea will draw a circle of random size, color, and location
+            view.addChild(circle);
+            circles.push(circle);
+
+        }
 
         // TODO 3 / 8 : Call the drawCircle() function 
-
+        var loopsCompleted = 0; 
+        while (loopsCompleted < 10) {
+            // do something                                     //This draws the 100 circles but as I made this only 5 of the circles were moving but the loop I made later made all them move
+            loopsCompleted++
+        } for (var loopsCompleted = 0; loopsCompleted < 10; loopsCompleted++) {
+            
+        drawCircle();
+        drawCircle();           //these draw 5 circles
+        drawCircle();
+        drawCircle();
+        drawCircle();
+ 
+    // do something
+} 
 
         ////////////////////////////////////////////////////////////
         ///////////////// PROGRAM LOGIC ////////////////////////////
@@ -38,14 +60,25 @@ var init = function (window) {
         and check to see if it has drifted off the screen.         
         */
         function update() {
-            // TODO 4 : Update the circle's position //
-
-            
+           /* // TODO 4 : Update the circle's position //
+            physikz.updatePosition( circles[0] );
+            physikz.updatePosition( circles[1] );    //draws 5 circles, got replaced by the loop
+            physikz.updatePosition( circles[2] );
+            physikz.updatePosition( circles[3] );
+            physikz.updatePosition( circles[4] );
             // TODO 5 / 10 : Call game.checkCirclePosition() on your circles.
-           
+            game.checkCirclePosition(circles[0]);
+            game.checkCirclePosition(circles[1]);       //this just made the circles move, but the cricels and got replaced by the loop
+            game.checkCirclePosition(circles[2]);
+            game.checkCirclePosition(circles[3]);
+            game.checkCirclePosition(circles[4]);
+      */
 
             // TODO 9 : Iterate over the array
-           
+           for(var k = 0; k <= circles.length -1; k++){      //This moves all 100 circles and keep all 100 circles within the screen without calling on each circle
+            physikz.updatePosition(circles[k]);
+            game.checkCirclePosition(circles[k]);
+           }
             
         }
     
@@ -60,6 +93,16 @@ var init = function (window) {
             if ( circle.x > canvas.width ) {
                 circle.x = 0;
             }
+            if ( circle.x < 0 ) {
+                circle.x = canvas.width;
+            }
+            if ( circle.y > canvas.height ) {          //This makes the circles go instantly from one side to the other
+                circle.y = 0;
+            }
+            if ( circle.y < 0 ) {
+                circle.y = canvas.height;
+            }
+            
             
             // TODO 7 : YOUR CODE STARTS HERE //////////////////////
             
