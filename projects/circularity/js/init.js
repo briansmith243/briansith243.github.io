@@ -40,13 +40,14 @@ var init = function (window) {
             // do something                                     //This draws the 100 circles but as I made this only 5 of the circles were moving but the loop I made later made all them move
             loopsCompleted++
         } for (var loopsCompleted = 0; loopsCompleted < 10; loopsCompleted++) {
-            
+           /* 
         drawCircle();
         drawCircle();           //these draw 5 circles
         drawCircle();
         drawCircle();
         drawCircle();
- 
+            */
+           
     // do something
 } 
 
