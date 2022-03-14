@@ -48,10 +48,10 @@ var background = function (window) {
            
         }
             var moon = draw.bitmap('img/moon.png');
-            moon.x = 300;
-            moon.y = 200;
-            moon.scaleX = 10.0;
-            moon.scaleY = 10.0;
+            moon.x = canvasWidth - 300;
+            moon.y = groundY - 450;
+            moon.scaleX = .5;
+            moon.scaleY = .5;
             background.addChild(moon);
                         
             // TODO 5: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
@@ -67,7 +67,7 @@ var background = function (window) {
             // TODO 4: Part 1 -
             tree = draw.bitmap('img/tree.png');
             tree.x = 600;
-            tree.y = groundY - 380;
+            tree.y = groundY - 110;
             background.addChild(tree);
             tree.scaleX = .5;
             tree.scaleY = .5;
@@ -87,7 +87,7 @@ var background = function (window) {
             var groundY = ground.y;
             
             // TODO 4: Part 2 - Move the tree!
-            tree.x = tree.x + 1;
+            tree.x = tree.x - 1;
 
             if(tree.x < -200) {
                 tree.x = canvasWidth;

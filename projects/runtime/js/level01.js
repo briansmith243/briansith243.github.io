@@ -41,11 +41,36 @@ var level01 = function (window) {
         sawBladeHitZone.addChild(obstacleImage);
         obstacleImage.x = -25; //tweaks the image 25 pixeld to left
         obstacleImage.y = -25; // tweaks the image 25 pixels up
+        sawBladeHitZone.rotationalVelocity = 5;
         }
        
        createSawBlade(400, 345);
        createSawBlade(600, 345);
        createSawBlade(800, 345);
+function create enemy(x,y){
+        var enemy = game.createGameItem('enemy',25);
+        var redSquare = draw.rect(50,50,'red');
+        redSquare.x = -25;
+        redSquare.y = -25;
+        enemy.addChild(redSquare);
+
+        enemy.x = 400;
+        enemy.y = groundY-50;
+            
+        game.addGameItem(enemy);
+        enemy.velocityX = -1;
+      
+        enemy.onPlayerCollision = function() {
+            console.log('The enemy has hit Halle');
+            game.changeIntegrity(-10)
+        };
+     enemy.onProjectileCollision = function() {
+        console.log('The projectile has hit enemy');
+        game.changeIntegrity(-10);
+        game.increaseScore(100);
+        enemy.fadeOut()
+    };
+}
         // DO NOT EDIT CODE BELOW HERE
     }
 };
