@@ -16,9 +16,17 @@ var level01 = function (window) {
             "number": 1, 
             "speed": -3,
             "gameItems": [
-                { "type": "sawblade", "x": 400, "y": groundY },
-                { "type": "sawblade", "x": 600, "y": groundY },
-                { "type": "sawblade", "x": 900, "y": groundY },
+                { "type": "sawblade", "x": 400, "y": groundY - 50},
+                { "type": "sawblade", "x": 600, "y": groundY - 50 },
+                { "type": "sawblade", "x": 800, "y": groundY - 50 },
+
+                 { "type": "enemy", "x": 500, "y": groundY - 50},
+                { "type": "enemy", "x": 700, "y": groundY - 50},
+                { "type": "enemy", "x": 900, "y": groundY - 50},
+
+                { "type": "reward", "x": 500, "y": groundY - 50},
+                { "type": "reward", "x": 700, "y": groundY - 50},
+                { "type": "reward", "x": 900, "y": groundY - 50},
             ]
         };
         window.levelData = levelData;
@@ -44,18 +52,19 @@ var level01 = function (window) {
         sawBladeHitZone.rotationalVelocity = 5;
         }
        
-       createSawBlade(400, 345);
-       createSawBlade(600, 345);
-       createSawBlade(800, 345);
-function create enemy(x,y){
-        var enemy = game.createGameItem('enemy',25);
-        var redSquare = draw.rect(50,50,'red');
-        redSquare.x = -25;
-        redSquare.y = -25;
+
+
+function createEnemy(x,y){
+        var enemy = game.createGameItem('enemy',30);
+        var redSquare = draw.bitmap('img/skelee.png');
+        redSquare.x = -30;
+        redSquare.y = -230;
+        enemy.scaleX = -.3;
+        enemy.scaleY = .3;
         enemy.addChild(redSquare);
 
-        enemy.x = 400;
-        enemy.y = groundY-50;
+        enemy.x = x;
+        enemy.y = y;
             
         game.addGameItem(enemy);
         enemy.velocityX = -1;
@@ -71,6 +80,23 @@ function create enemy(x,y){
         enemy.fadeOut()
     };
 }
+    for(var i = 0;i < levelData.gameItems.length; i++){
+     var gameItem = levelData.gameItems[i];
+
+    if (gameItem.type === "sawblade"){
+        createSawBlade(gameItem.x , gameItem.y);
+        
+    }  if (gameItem.type === "enemy"){
+        createEnemy(gameItem.x , gameItem.y); }
+    
+}function createReward( x, y){
+    var reward = game.createGameItem('reward', 25);
+    var blueSquare = draw.rect(50,50,'blue');
+    blueSquare.x -25;
+    blueSquare.y -25;
+}
+
+
         // DO NOT EDIT CODE BELOW HERE
     }
 };

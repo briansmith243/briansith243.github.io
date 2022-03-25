@@ -65,9 +65,9 @@ var background = function (window) {
             }
             
             // TODO 4: Part 1 -
-            tree = draw.bitmap('img/tree.png');
-            tree.x = 600;
-            tree.y = groundY - 110;
+            tree = draw.bitmap('img/evil tree.png');
+            tree.x = 300;
+            tree.y = groundY - 340;
             background.addChild(tree);
             tree.scaleX = .5;
             tree.scaleY = .5;
