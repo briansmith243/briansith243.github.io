@@ -35,12 +35,12 @@ var init = function (window) {
         }
 
         // TODO 3 / 8 : Call the drawCircle() function 
-        var loopsCompleted = 0; 
-        while (loopsCompleted < 10) {
+        for(var i = 0; i<= 100; i++){
+            drawCircle();
+        }
+       
             // do something                                     //This draws the 100 circles but as I made this only 5 of the circles were moving but the loop I made later made all them move
-            loopsCompleted++
-        } for (var loopsCompleted = 0; loopsCompleted < 10; loopsCompleted++) {
-           /* 
+       /*
         drawCircle();
         drawCircle();           //these draw 5 circles
         drawCircle();
@@ -126,7 +126,7 @@ var init = function (window) {
         
         app.addUpdateable(window.opspark.game);
     }
-};
+;
 
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
 if((typeof process !== 'undefined') &&

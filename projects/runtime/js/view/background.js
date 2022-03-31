@@ -27,6 +27,7 @@ var background = function (window) {
         
         // ANIMATION VARIABLES HERE:
         var tree;
+        var flag;
         var buildings = [];
         // called at the start of game and whenever the page is resized
         // add objects for display in background. draws each image added to the background once
@@ -73,6 +74,13 @@ var background = function (window) {
             tree.scaleY = .5;
             background.addChild(tree);
             
+            flag = draw.bitmap('img/flag.png');
+            flag.x = 3000 ;
+            flag.y = groundY - 285;
+            background.addChild(flag);
+            flag.scaleX = .3;
+            flag.scaleY = .3;
+            background.addChild(flag);
             
             
         } // end of render function - DO NOT DELETE
@@ -91,6 +99,11 @@ var background = function (window) {
 
             if(tree.x < -200) {
                 tree.x = canvasWidth;
+            }
+            flag.x = flag.x - 1;
+
+            if(flag.x < -200) {
+                flag.x = canvasWidth;
             }
             
             // TODO 5: Part 2 - Parallax
