@@ -23,11 +23,11 @@ var background = function (window) {
         var groundY = ground.y;
         
         // container which will be returned
-        var background;
+        var background; //used to make background objects such as code
         
         // ANIMATION VARIABLES HERE:
-        var tree;
-        var flag;
+        var tree;  //used for later code but this will help us make functions
+        var flag;//^^^^^
         var buildings = [];
         // called at the start of game and whenever the page is resized
         // add objects for display in background. draws each image added to the background once
@@ -37,23 +37,23 @@ var background = function (window) {
             // TODO: 2 - Part 2
             // this fills the background with a obnoxious yellow
             // you should modify this to suit your game
-            var backgroundFill = draw.rect(canvasWidth,groundY,'yellow'); background.addChild(backgroundFill);
-            background.addChild(backgroundFill);
+            var backgroundFill = draw.rect(canvasWidth,groundY,'dark purple'); background.addChild(backgroundFill);
+            background.addChild(backgroundFill);  //changes background color and sizes the color of the background
          
             // TODO: 3 - Add a moon and starfield
-         for (var i = 0; i<= 100; i++){
-            var circle = draw.circle(10,'white','LightGray',2);
-            circle.x = canvasWidth*Math.random();
-            circle.y = groundY*Math.random();
-            background.addChild(circle);
+         for (var i = 0; i<= 100; i++){  //adds 100 stars
+            var circle = draw.circle(10,'white','LightGray',2);  //actually makes the circle
+            circle.x = canvasWidth*Math.random(); // scales the circls x
+            circle.y = groundY*Math.random();  //scales the circles y
+            background.addChild(circle); //addds the circle for the moon
            
         }
             var moon = draw.bitmap('img/moon.png');
-            moon.x = canvasWidth - 300;
-            moon.y = groundY - 450;
-            moon.scaleX = .5;
-            moon.scaleY = .5;
-            background.addChild(moon);
+            moon.x = canvasWidth - 300;  //variables to add size to the moon image
+            moon.y = groundY - 450; //this changes the y axis like chnage this to make your code move up or down
+            moon.scaleX = .5;    //Sizes the moon and makes it bigger or smaller
+            moon.scaleY = .5;//  ^^^
+            background.addChild(moon); //adds the moon to the background
                         
             // TODO 5: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
             for(var i=0;i<5;++i) {
@@ -66,20 +66,20 @@ var background = function (window) {
             }
             
             // TODO 4: Part 1 -
-            tree = draw.bitmap('img/evil tree.png');
-            tree.x = 300;
-            tree.y = groundY - 340;
-            background.addChild(tree);
-            tree.scaleX = .5;
-            tree.scaleY = .5;
-            background.addChild(tree);
+            tree = draw.bitmap('img/evil tree.png'); //makes the evil tree imagoge i Implemented  in the game
+            tree.x = 300; //changes the tree's x  
+            tree.y = groundY - 340;  //changes the trees y 
+            background.addChild(tree);  //adds the tree and puts it equal to the ground
+            tree.scaleX = .5; //depending on how wide I want the tree I change this
+            tree.scaleY = .5; //depending on how higfh I want the tree I change this
+            background.addChild(tree); //actually adds the tree so like it completes the code
             
-            flag = draw.bitmap('img/flag.png');
-            flag.x = 3000 ;
-            flag.y = groundY - 285;
-            background.addChild(flag);
-            flag.scaleX = .3;
-            flag.scaleY = .3;
+            flag = draw.bitmap('img/flag.png'); //makes the flag from google as the image
+            flag.x = 3000 ; //changes the tree's x so it puts it later in the game like a checkpoint
+            flag.y = groundY - 285;  //puts the flag on the floor so it doesnt look like its floating
+            background.addChild(flag); //adds the flag
+            flag.scaleX = .3; //makes the flag wider
+            flag.scaleY = .3; //makes the flag taller
             background.addChild(flag);
             
             
@@ -88,21 +88,21 @@ var background = function (window) {
         
         // Perform background animation
         // called on each timer "tick" - 60 times per second
-        function update() {
+        function update() {  //makes funciton
             // useful variables
-            var canvasWidth = app.canvas.width;
-            var canvasHeight = app.canvas.height;
-            var groundY = ground.y;
+            var canvasWidth = app.canvas.width;  //changes how I want the game to fit on the screeens width
+            var canvasHeight = app.canvas.height;//changes how the game is on the screen but its height
+            var groundY = ground.y; 
             
             // TODO 4: Part 2 - Move the tree!
-            tree.x = tree.x - 1;
+            tree.x = tree.x - 1; //tacking the value of value.x and decreasing by 1 pixel every time the update function runs.Makes it more left
 
-            if(tree.x < -200) {
-                tree.x = canvasWidth;
+            if(tree.x < -200) {// if the x posiyion of the tree exceeds -200 then the x position of the tree wuiil be reset to the canvas width
+                tree.x = canvasWidth; // the x position of the tree is assigned ro the canvas width
             }
-            flag.x = flag.x - 1;
+            flag.x = flag.x - 1; // basically does the same thing as the tree code but instead uses a flag
 
-            if(flag.x < -200) {
+            if(flag.x < -200) {// does the same thing as the tree code but instead I put a flag
                 flag.x = canvasWidth;
             }
             
@@ -120,11 +120,11 @@ var background = function (window) {
         
         /* Make a createjs Container for the background and let it know about the render and upate functions*/
         background = new createjs.Container();
-        background.resize = render;
-        background.update = update;
+        background.resize = render;  //used to help resize
+        background.update = update; //gonna be good when needing to update the game and adding new things
         
         /* make the background able to respond to resizing and timer updates*/
-        app.addResizeable(background);
+        app.addResizeable(background); //rezises the background
         app.addUpdateable(background);
         
         /* render and return the background */

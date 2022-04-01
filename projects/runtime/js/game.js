@@ -6,8 +6,8 @@
     var createjs = window.createjs;
 
     window.opspark.createGameManager = function(app,hud) {
-        var score = 0;
-        var health = 100;
+        var score = 0;//starting score
+        var health = 100; //gives halle health
         var view = app.view;
         var space = app.space;
 
